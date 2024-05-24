@@ -16,13 +16,7 @@ class Torneo {
     public function agregarPartido($partido) {
         $this->partidos[] = $partido;
     }
-    /*Implementar el método ingresarPartido($OBJEquipo1, $OBJEquipo2, $fecha, $tipoPartido) en la  clase Torneo el cual 
-    recibe por parámetro 2 equipos, la fecha en la que se realizará el partido y si se trata de un partido de futbol o basquetbol . 
-    El método debe crear y retornar la instancia de la clase Partido que corresponda y almacenarla en la colección de partidos del Torneo. 
-    Se debe chequear que los 2 equipos tengan la  misma categoría e igual cantidad de jugadores, caso contrario no podrá ser registrado 
-    ese partido en el torneo.  
-    */
-    protected function leerColObj($arrayDeObjetos){
+    public function leerColObj($arrayDeObjetos){
         $cadena = "";
             foreach($arrayDeObjetos as $objAnalizado){
                 $cadena = $cadena . $objAnalizado ."\n";
@@ -31,9 +25,17 @@ class Torneo {
     }
     public function __toString()
     {
-        $objpartidos = leerColObj($this->getPartidos());
-        return "Partidos: ".$objpartidos."Premio ".$this->getPremio();
+        $partidos=$this->getPartidos();
+        $objpartidos = $this->leerColObj($partidos);
+        return "Partidos: ".$objpartidos."\n Premio ".$this->getPremio();
     }
+    /*Implementar el método ingresarPartido($OBJEquipo1, $OBJEquipo2, $fecha, $tipoPartido) en la  clase Torneo el cual 
+    recibe por parámetro 2 equipos, la fecha en la que se realizará el partido y si se trata de un partido de futbol o basquetbol . 
+    El método debe crear y retornar la instancia de la clase Partido que corresponda y almacenarla en la colección de partidos del Torneo. 
+    Se debe chequear que los 2 equipos tengan la  misma categoría e igual cantidad de jugadores, caso contrario no podrá ser registrado 
+    ese partido en el torneo.  
+    */
+    
     public function ingresarPartido($OBJEquipo1, $OBJEquipo2, $fecha, $tipoPartido){
         $partido=true;
         if ($OBJEquipo1->getObjCategoria()->getDescripcion() != $OBJEquipo2->getObjCategoria()->getDescripcion() ) {
